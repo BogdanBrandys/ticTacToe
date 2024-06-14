@@ -1,8 +1,8 @@
 package com.kodilla.tictactoe;
 
-public class CheckIfItsWinner {
+public class CheckIfItsWinner10 {
 
-    public boolean checkRows(Player player, Board board) {
+    public boolean checkRows(Player player, Board10 board) {
         char sign;
         int numberOfSigns = 0;
         char[][] board10 = board.getTwoD_board();
@@ -17,7 +17,7 @@ public class CheckIfItsWinner {
             for (int j = 0; j < board10.length; j++) {
                 if (board10[i][j] == sign) {
                     numberOfSigns++;
-                    if (numberOfSigns == 3) {
+                    if (numberOfSigns == 5) {
                         return true;
                     }
                 } else {
@@ -28,7 +28,7 @@ public class CheckIfItsWinner {
         return false;
     }
     //checking columns
-    public boolean checkCol(Player player, Board board) {
+    public boolean checkCol(Player player, Board10 board) {
         char sign;
         int numberOfSigns = 0;
         char[][] board10 = board.getTwoD_board();
@@ -41,7 +41,7 @@ public class CheckIfItsWinner {
             for (int i = 0; i < board10.length; i++) {
                 if ((board10[i][j]) == sign) {
                     numberOfSigns++;
-                    if (numberOfSigns == 3) {
+                    if (numberOfSigns == 5) {
                         return true;
                     }
                 } else {
@@ -52,7 +52,7 @@ public class CheckIfItsWinner {
         return false;
     }
 
-    public boolean checkDiag(Player player, Board board) {
+    public boolean checkDiag(Player player, Board10 board) {
         char sign;
         int numberOfSigns = 0;
         char[][] board10 = board.getTwoD_board();
@@ -74,7 +74,7 @@ public class CheckIfItsWinner {
                 }
                 i = i - 1;
                 j = j + 1;
-                if (numberOfSigns == 3) {
+                if (numberOfSigns == 5) {
                     return true;
                 }
             }
@@ -91,13 +91,13 @@ public class CheckIfItsWinner {
                 }
                 i = i - 1;
                 j = j + 1;
-                if (numberOfSigns == 3) {
+                if (numberOfSigns == 5) {
                     return true;
                 }
             }
         } return false;
     }
-    public boolean checkDiagReverse(Player player, Board board) {
+    public boolean checkDiagReverse(Player player, Board10 board) {
         char sign;
         int numberOfSigns = 0;
         char[][] board10 = board.getTwoD_board();
@@ -119,15 +119,15 @@ public class CheckIfItsWinner {
                 }
                 i = i - 1;
                 j = j - 1;
-                if (numberOfSigns == 3) {
+                if (numberOfSigns == 5) {
                     return true;
                 }
             }
         }
-        for (int k = 1; k >= 0; k--) {
-            int i = length-1;
+        for (int k = 8; k >= 1; k--) {
+            int i = length - 1;
             int j = k;
-            while (i >= 2) {
+            while (j >= 0) {
                 if (board10[i][j] == sign) {
                     numberOfSigns++;
                 } else {
@@ -135,7 +135,7 @@ public class CheckIfItsWinner {
                 }
                 i = i - 1;
                 j = j - 1;
-                if (numberOfSigns == 3) {
+                if (numberOfSigns == 5) {
                     return true;
                 }
             }

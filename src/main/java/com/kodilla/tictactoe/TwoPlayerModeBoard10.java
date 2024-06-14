@@ -3,10 +3,11 @@ package com.kodilla.tictactoe;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class TwoPlayersMode {
-    public String GameEngine(Player player1, Player player2) {
-        Board boardGame = new Board();
-        CheckIfItsWinner checkIfItsWinner = new CheckIfItsWinner();
+public class TwoPlayerModeBoard10 {
+
+    public String GameEngine10(Player player1, Player player2) {
+        Board10 boardGame = new Board10();
+        CheckIfItsWinner10 checkIfItsWinner = new CheckIfItsWinner10();
         Scanner scanner = new Scanner(System.in);
         //game1
         boardGame.clearBoard();
@@ -18,9 +19,7 @@ public class TwoPlayersMode {
                     do {
                         try {
                             input = scanner.nextInt();
-                            if (input == 00 || input == 01 || input == 02
-                                || input == 10 || input == 11 || input == 12
-                                || input == 20 || input == 21 || input == 22) {
+                            if (input > 00 && input < 100) {
                                 break;
                             } else {
                                 System.out.println("Please enter correct coordinates");
@@ -31,9 +30,7 @@ public class TwoPlayersMode {
                             scanner.next();
                             continue;
                         }
-                    } while (input != 00 && input != 01 && input != 02
-                            && input != 10 && input != 11 && input != 12
-                            && input != 20 && input != 21 && input != 22);
+                    } while (input < 00 || input > 100);
                     if (boardGame.checkField(input)) {
                         boardGame.setTwoD_board(input, player1);
                         break;
@@ -46,15 +43,13 @@ public class TwoPlayersMode {
                 }
             } while (true);
             boardGame.printBoard();
-            System.out.println("Player 2 Round: " + player2.getPlayerName());
+            System.out.println("Player 2 Turn: " + player2.getPlayerName());
             do {
                 try {
                     do {
                         try {
                             input = scanner.nextInt();
-                            if (input == 00 || input == 01 || input == 02
-                                    || input == 10 || input == 11 || input == 12
-                                    || input == 20 || input == 21 || input == 22) {
+                            if (input > 00 && input < 100) {
                                 break;
                             } else {
                                 System.out.println("Please enter correct coordinates");
@@ -65,9 +60,7 @@ public class TwoPlayersMode {
                             scanner.next();
                             continue;
                         }
-                    } while (input != 00 && input != 01 && input != 02
-                            && input != 10 && input != 11 && input != 12
-                            && input != 20 && input != 21 && input != 22);
+                    } while (input < 00 || input > 100);
                     if (boardGame.checkField(input)) {
                         boardGame.setTwoD_board(input, player2);
                         break;
@@ -88,7 +81,7 @@ public class TwoPlayersMode {
                 return "It's a Tie!";
             }
             else if ((checkIfItsWinner.checkRows(player1, boardGame)) ||
-            (checkIfItsWinner.checkCol(player1, boardGame)) ||
+                    (checkIfItsWinner.checkCol(player1, boardGame)) ||
                     (checkIfItsWinner.checkDiag(player1, boardGame)) ||
                     (checkIfItsWinner.checkDiagReverse(player1, boardGame))) {
                 return "The winner is: " + player1.getPlayerName();

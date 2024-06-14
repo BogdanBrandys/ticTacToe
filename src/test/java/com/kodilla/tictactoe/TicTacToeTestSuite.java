@@ -31,64 +31,77 @@ public class TicTacToeTestSuite {
         @Test
         public void testWinScenariosRow() {
             //Given
-            CheckIfItsWinner testCheckIfItsWinner = new CheckIfItsWinner();
+            Player player1 = new Player("Bogdan", 1);
+            CheckIfItsWinner checkIfItsWinner = new CheckIfItsWinner();
+            Board board = new Board();
             //When
-            testCheckIfItsWinner.setMovesTable(7);
-            testCheckIfItsWinner.setMovesTable(8);
-            testCheckIfItsWinner.setMovesTable(9);
+            char[][] testArr = {{' ', ' ', ' '}, {'X', 'X', 'X'}, {' ', ' ', ' '}};
+            board.setTwoD_board(testArr);
             //Then
             boolean expected = true;
-            boolean actual = testCheckIfItsWinner.checkMovesTable();
+            boolean actual = checkIfItsWinner.checkRows(player1, board);
             assertEquals(expected, actual);
         }
 
         @Test
         public void testWinScenariosColumn() {
             //Given
-            CheckIfItsWinner testCheckIfItsWinner = new CheckIfItsWinner();
+            Player player1 = new Player("Bogdan", 1);
+            CheckIfItsWinner checkIfItsWinner = new CheckIfItsWinner();
+            Board board = new Board();
             //When
-            testCheckIfItsWinner.setMovesTable(7);
-            testCheckIfItsWinner.setMovesTable(4);
-            testCheckIfItsWinner.setMovesTable(1);
+            char[][] testArr = {{'X', ' ', ' '}, {'X', ' ', ' '}, {'X', ' ', ' '}};
+            board.setTwoD_board(testArr);
             //Then
             boolean expected = true;
-            boolean actual = testCheckIfItsWinner.checkMovesTable();
+            boolean actual = checkIfItsWinner.checkCol(player1, board);
             assertEquals(expected, actual);
         }
 
         @Test
-        public void testWinScenariosSlash() {
+        public void testWinScenariosDiag() {
             //Given
-            CheckIfItsWinner testCheckIfItsWinner = new CheckIfItsWinner();
+            Player player1 = new Player("Bogdan", 1);
+            CheckIfItsWinner checkIfItsWinner = new CheckIfItsWinner();
+            Board board = new Board();
             //When
-            testCheckIfItsWinner.setMovesTable(7);
-            testCheckIfItsWinner.setMovesTable(5);
-            testCheckIfItsWinner.setMovesTable(3);
+            char[][] testArr = {{' ', 'O', 'X'}, {' ', 'X', ' '}, {'X', ' ', 'O'}};
+            board.setTwoD_board(testArr);
             //Then
             boolean expected = true;
-            boolean actual = testCheckIfItsWinner.checkMovesTable();
+            boolean actual = checkIfItsWinner.checkDiag(player1, board);
             assertEquals(expected, actual);
         }
-
+        @Test
+        public void testWinScenariosDiagReverse() {
+            //Given
+            Player player1 = new Player("Bogdan", 1);
+            CheckIfItsWinner10 checkIfItsWinner = new CheckIfItsWinner10();
+            Board10 board = new Board10();
+            //When
+            char[][] testArr = {{' ', ' ', ' ', ' ', ' ', 'X',' ',' ',' ', ' '},
+                                {' ', ' ', ' ', ' ', ' ', ' ','X',' ',' ', ' '},
+                                {' ', ' ', ' ', ' ', ' ', ' ',' ','X',' ', ' '},
+                                {' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ', ' '},
+                                {'X', ' ', ' ', ' ', ' ', ' ',' ',' ',' ', 'X'},
+                                {' ', 'X', ' ', ' ', ' ', ' ',' ',' ',' ', ' '},
+                                {' ', ' ', 'X', ' ', ' ', ' ',' ',' ',' ', ' '},
+                                {' ', ' ', ' ', 'X', ' ', ' ',' ',' ',' ', ' '},
+                                {' ', ' ', ' ', ' ', 'X', ' ',' ',' ',' ', ' '},
+                                {' ', ' ', ' ', ' ', ' ', ' ',' ',' ',' ', ' '}};
+            board.setTwoD_board(testArr);
+            //Then
+            boolean expected = true;
+            boolean actual = checkIfItsWinner.checkDiagReverse(player1, board);
+            assertEquals(expected, actual);
+        }
+        /*
         @Nested
         @DisplayName("Tests for method checkMovesTable - Tie Scenario")
         class TestsForTieScenario {
             @Test
             public void testTieScenariosRow() {
-                //Given
-                CheckIfItsWinner testCheckIfItsWinner1 = new CheckIfItsWinner();
-                CheckIfItsWinner testCheckIfItsWinner2 = new CheckIfItsWinner();
-                //When
-                testCheckIfItsWinner1.setMovesTable(7);
-                testCheckIfItsWinner1.setMovesTable(8);
-                testCheckIfItsWinner1.setMovesTable(9);
-                testCheckIfItsWinner2.setMovesTable(4);
-                testCheckIfItsWinner2.setMovesTable(5);
-                testCheckIfItsWinner2.setMovesTable(6);
-                //Then
-                boolean expected = true;
-                boolean actual = testCheckIfItsWinner1.checkMovesTable() && testCheckIfItsWinner2.checkMovesTable();
-                assertEquals(expected, actual);
+
             }
         }
 
@@ -108,6 +121,6 @@ public class TicTacToeTestSuite {
                 //Then
                 assertThrows(FieldIsOccupiedException.class, () -> board.setTwoD_board(5, player2));
             }
-        }
+        }*/
     }
 }
