@@ -54,11 +54,7 @@ public class Player {
     }
     public int makeMoveBigBoard() {
         Random rand = new Random();
-        int index = rand.nextInt(0, 99);
-        if (index < 10) {
-            return (int) '0' + index;
-        } else {
+        int index = rand.nextInt(100);
             return index;
         }
-    }
     }

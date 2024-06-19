@@ -85,18 +85,22 @@ public class TwoPlayersMode {
                     (checkIfItsWinner.checkCol(player1, boardGame) && checkIfItsWinner.checkCol(player2, boardGame)) ||
                     (checkIfItsWinner.checkDiag(player1, boardGame) && checkIfItsWinner.checkDiag(player2, boardGame)) ||
                     (checkIfItsWinner.checkDiagReverse(player1, boardGame) && checkIfItsWinner.checkDiagReverse(player2, boardGame))) {
+                player1.setNumberOfWinMatches(1);
+                player2.setNumberOfWinMatches(1);
                 return "It's a Tie!";
             }
             else if ((checkIfItsWinner.checkRows(player1, boardGame)) ||
             (checkIfItsWinner.checkCol(player1, boardGame)) ||
                     (checkIfItsWinner.checkDiag(player1, boardGame)) ||
                     (checkIfItsWinner.checkDiagReverse(player1, boardGame))) {
+                player1.setNumberOfWinMatches(1);
                 return "The winner is: " + player1.getPlayerName();
             }
             else if ((checkIfItsWinner.checkRows(player2, boardGame)) ||
                     (checkIfItsWinner.checkCol(player2, boardGame)) ||
                     (checkIfItsWinner.checkDiag(player2, boardGame)) ||
                     (checkIfItsWinner.checkDiagReverse(player2, boardGame))) {
+                player2.setNumberOfWinMatches(1);
                 return "The winner is: " + player2.getPlayerName();
             }
         } while (!checkIfItsWinner.checkDiagReverse(player1, boardGame) && !checkIfItsWinner.checkDiagReverse(player2, boardGame));
